@@ -312,8 +312,9 @@ class MyKeyListener extends KeyAdapter {
     public void keyReleased(KeyEvent e) {
 //        super.keyReleased(e);
         // 生成一个炸弹
-
+    		
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+        	
 //            int userX = gamePanelContext.userX;
 //            int userY = gamePanelContext.userY;
             int userX = gamePanelContext.bluePlayer.x;
