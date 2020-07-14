@@ -23,6 +23,7 @@ public class Data {
     public static URL floor03URL = Data.class.getResource("statics/floor03.png");
     public static ImageIcon floor03 = new ImageIcon(floor03URL);
 
+    // 蓝角色
     public static URL upURL = Data.class.getResource("statics/up.png");
     public static ImageIcon up = new ImageIcon(upURL);
 
@@ -43,4 +44,6 @@ public class Data {
 
     public static URL destr01URL = Data.class.getResource("statics/destr01.png");
     public static ImageIcon destr01 = new ImageIcon(destr01URL);
+
+
 }

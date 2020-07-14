@@ -17,9 +17,9 @@ public class StartGame {
         jFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         jFrame.setBounds(10,10,770,750);
         jFrame.setResizable(false);
-//        GamePanel gamePanel = new GamePanel();
+        GamePanel gamePanel = new GamePanel();
         // 第一关
-//        jFrame.add(gamePanel);
+        jFrame.add(gamePanel);
         jFrame.setVisible(true);
         // 正常的游戏界面都是在面板上面的
     }
