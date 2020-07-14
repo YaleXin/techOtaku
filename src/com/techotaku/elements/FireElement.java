@@ -1,12 +1,14 @@
 /**
  * 
  */
-package com.techotaku;
+package com.techotaku.elements;
 
-/**   
+import com.techotaku.elements.BaseElement;
+
+/**
 *Author: techOtaku    
 */
-public class FireElement extends BaseElement{
+public class FireElement extends BaseElement {
 
 	/**
 	 * @param x

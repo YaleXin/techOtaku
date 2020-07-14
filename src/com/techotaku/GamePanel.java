@@ -4,11 +4,10 @@
 package com.techotaku;
 
 
+import com.techotaku.elements.*;
 import com.techotaku.enums.KeySet;
 import com.techotaku.enums.Direction;
 import com.techotaku.enums.Props;
-import com.techotaku.threads.KeyListenerRunnable;
-import com.techotaku.threads.PaintRunnable;
 import com.techotaku.utils.InitTool;
 
 import java.awt.Graphics;
@@ -32,6 +31,8 @@ public class GamePanel extends JPanel {
 	public ArrayList<FireElement> fireElements;
 	// 可破坏障碍物
 	public ArrayList<DestructibleObstacle> destructibleObstacles;
+	// 炸弹
+	public ArrayList<BombElement> bombElements;
 	// 按键集合
 	public HashSet<KeySet> keySets;
 	// 道具集合
@@ -54,6 +55,12 @@ public class GamePanel extends JPanel {
 			}
 
 
+
+		// 绘制墙体
+		for (WallElement element:
+			 this.wallElements) {
+			Data.floor01.paintIcon(this,g,element.x,element.y);
+		}
 
 		// 绘制蓝角色
 		if(this.bluePlayer.nowDirection == Direction.UP){

@@ -1,13 +1,17 @@
 package com.techotaku.utils;
 
 import com.techotaku.GamePanel;
-import com.techotaku.PlayerElement;
+import com.techotaku.elements.PlayerElement;
 import com.techotaku.enums.Direction;
-import com.techotaku.listeners.MyKeyListener;
+import com.techotaku.listeners.GameKeyListener;
+
 import com.techotaku.threads.KeyListenerRunnable;
 import com.techotaku.threads.PaintRunnable;
+import com.techotaku.elements.WallElement;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+
 
 /**
  * Author：Yalexin
@@ -25,6 +29,10 @@ public class InitTool {
     public void gameInit(){
         this.gamePanelContext.keySets = new HashSet<>();
         this.gamePanelContext.propsSet = new HashSet<>();
+        this.gamePanelContext.wallElements = new ArrayList<>();
+
+//        Timer timer = new Timer(40, new MyActionListener(this.gamePanelContext));
+//        timer.start();
         userInit();
         mapInit();
         threadInit();
@@ -34,7 +42,7 @@ public class InitTool {
     private void eventInit() {
         // 获得焦点事件
         this.gamePanelContext.setFocusable(true);
-        MyKeyListener myKeyListener = new MyKeyListener(this.gamePanelContext);
+        GameKeyListener myKeyListener = new GameKeyListener(this.gamePanelContext);
         this.gamePanelContext.addKeyListener(myKeyListener);
     }
 
@@ -53,7 +61,71 @@ public class InitTool {
 
 
     private void mapInit() {
+        // 初始化墙体
+        this.gamePanelContext.wallElements.add(new WallElement(100, 50));
+        this.gamePanelContext.wallElements.add(new WallElement(150, 50));
+        this.gamePanelContext.wallElements.add(new WallElement(250, 50));
+        this.gamePanelContext.wallElements.add(new WallElement(300, 50));
+        this.gamePanelContext.wallElements.add(new WallElement(400, 50));
+        this.gamePanelContext.wallElements.add(new WallElement(450, 50));
+        this.gamePanelContext.wallElements.add(new WallElement(550, 50));
+        this.gamePanelContext.wallElements.add(new WallElement(600, 50));
+        this.gamePanelContext.wallElements.add(new WallElement(650, 50));
+        this.gamePanelContext.wallElements.add(new WallElement(100, 100));
+        this.gamePanelContext.wallElements.add(new WallElement(600, 100));
+        this.gamePanelContext.wallElements.add(new WallElement(0, 150));
+        this.gamePanelContext.wallElements.add(new WallElement(200, 150));
+        this.gamePanelContext.wallElements.add(new WallElement(250, 150));
+        this.gamePanelContext.wallElements.add(new WallElement(300, 150));
+        this.gamePanelContext.wallElements.add(new WallElement(400, 150));
+        this.gamePanelContext.wallElements.add(new WallElement(450, 150));
+        this.gamePanelContext.wallElements.add(new WallElement(500, 150));
+        this.gamePanelContext.wallElements.add(new WallElement(700, 150));
+        this.gamePanelContext.wallElements.add(new WallElement(0, 200));
+        this.gamePanelContext.wallElements.add(new WallElement(50, 200));
+        this.gamePanelContext.wallElements.add(new WallElement(100, 200));
+        this.gamePanelContext.wallElements.add(new WallElement(200, 200));
+        this.gamePanelContext.wallElements.add(new WallElement(500, 200));
+        this.gamePanelContext.wallElements.add(new WallElement(600, 200));
+        this.gamePanelContext.wallElements.add(new WallElement(650, 200));
+        this.gamePanelContext.wallElements.add(new WallElement(700, 200));
+        this.gamePanelContext.wallElements.add(new WallElement(200, 250));
+        this.gamePanelContext.wallElements.add(new WallElement(500, 250));
+        this.gamePanelContext.wallElements.add(new WallElement(50, 300));
+        this.gamePanelContext.wallElements.add(new WallElement(100, 300));
+        this.gamePanelContext.wallElements.add(new WallElement(600, 300));
+        this.gamePanelContext.wallElements.add(new WallElement(650, 300));
 
+        this.gamePanelContext.wallElements.add(new WallElement(200, 350));
+        this.gamePanelContext.wallElements.add(new WallElement(500, 350));
+        this.gamePanelContext.wallElements.add(new WallElement(0, 400));
+        this.gamePanelContext.wallElements.add(new WallElement(50, 400));
+        this.gamePanelContext.wallElements.add(new WallElement(100, 400));
+        this.gamePanelContext.wallElements.add(new WallElement(200, 400));
+        this.gamePanelContext.wallElements.add(new WallElement(500, 400));
+        this.gamePanelContext.wallElements.add(new WallElement(600, 400));
+        this.gamePanelContext.wallElements.add(new WallElement(650, 400));
+        this.gamePanelContext.wallElements.add(new WallElement(700, 400));
+        this.gamePanelContext.wallElements.add(new WallElement(0, 450));
+        this.gamePanelContext.wallElements.add(new WallElement(200, 450));
+        this.gamePanelContext.wallElements.add(new WallElement(250, 450));
+        this.gamePanelContext.wallElements.add(new WallElement(300, 450));
+        this.gamePanelContext.wallElements.add(new WallElement(400, 450));
+        this.gamePanelContext.wallElements.add(new WallElement(450, 450));
+        this.gamePanelContext.wallElements.add(new WallElement(500, 450));
+        this.gamePanelContext.wallElements.add(new WallElement(700, 450));
+        this.gamePanelContext.wallElements.add(new WallElement(100, 500));
+        this.gamePanelContext.wallElements.add(new WallElement(600, 500));
+        this.gamePanelContext.wallElements.add(new WallElement(50, 550));
+        this.gamePanelContext.wallElements.add(new WallElement(100, 550));
+        this.gamePanelContext.wallElements.add(new WallElement(150, 550));
+        this.gamePanelContext.wallElements.add(new WallElement(250, 550));
+        this.gamePanelContext.wallElements.add(new WallElement(300, 550));
+        this.gamePanelContext.wallElements.add(new WallElement(400, 550));
+        this.gamePanelContext.wallElements.add(new WallElement(450, 550));
+        this.gamePanelContext.wallElements.add(new WallElement(550, 550));
+        this.gamePanelContext.wallElements.add(new WallElement(600, 550));
+        this.gamePanelContext.wallElements.add(new WallElement(650, 550));
     }
 
     private void userInit() {
@@ -63,7 +135,7 @@ public class InitTool {
         this.gamePanelContext.bluePlayer.hp = 100;
 
 
-        this.gamePanelContext.redPlayer = new PlayerElement(500,500);
+        this.gamePanelContext.redPlayer = new PlayerElement(700,600);
         this.gamePanelContext.redPlayer.setNowDirection(Direction.LEFT);
         this.gamePanelContext.redPlayer.speed = 5;
         this.gamePanelContext.redPlayer.hp = 100;

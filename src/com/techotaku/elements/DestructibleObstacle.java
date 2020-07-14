@@ -1,15 +1,18 @@
 /**
  * 
  */
-package com.techotaku;
+package com.techotaku.elements;
 
 /**   
 *Author: techOtaku    
 */
+
+import com.techotaku.elements.BaseElement;
+
 /**
  * 可破坏障碍物类
  */
-public class DestructibleObstacle extends BaseElement{
+public class DestructibleObstacle extends BaseElement {
 
 	/**
 	 * @param x

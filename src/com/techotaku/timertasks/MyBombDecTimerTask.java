@@ -1,6 +1,6 @@
 package com.techotaku.timertasks;
 
-import com.techotaku.PlayerElement;
+import com.techotaku.elements.PlayerElement;
 
 import java.util.TimerTask;
 

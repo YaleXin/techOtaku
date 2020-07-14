@@ -1,12 +1,14 @@
 /**
  * 
  */
-package com.techotaku;
+package com.techotaku.elements;
 
-/**   
+import com.techotaku.elements.BaseElement;
+
+/**
 *Author: techOtaku    
 */
-public class WallElement extends BaseElement{
+public class WallElement extends BaseElement {
 
 	/**
 	 * @param x

@@ -37,9 +37,9 @@ public class GameKeyListener implements KeyListener {
             case 68://D
                 gamePanelContext.keySets.add(KeySet.D);
                 break;
-            case 70://F
-                gamePanelContext.keySets.add(KeySet.F);
-                break;
+//            case 70://F
+//                gamePanelContext.keySets.add(KeySet.F);
+//                break;
 
             case 38://↑
                 gamePanelContext.keySets.add(KeySet.UP);
@@ -57,9 +57,9 @@ public class GameKeyListener implements KeyListener {
                 gamePanelContext.keySets.add(KeySet.RIGHT);
                 break;
 
-            case 16: //SHIFT
-                gamePanelContext.keySets.add(KeySet.SHIFT);
-                break;
+//            case 16: //SHIFT
+//                gamePanelContext.keySets.add(KeySet.SHIFT);
+//                break;
 
             default://其它按键无视
                 break;
@@ -87,9 +87,9 @@ public class GameKeyListener implements KeyListener {
                 gamePanelContext.keySets.remove(KeySet.D);
                 break;
 
-            case 70://F
-                gamePanelContext.keySets.remove(KeySet.F);
-                break;
+//            case 70://F
+//                gamePanelContext.keySets.remove(KeySet.F);
+//                break;
 
             case 38://↑
                 gamePanelContext.keySets.remove(KeySet.UP);
@@ -107,12 +107,20 @@ public class GameKeyListener implements KeyListener {
                 gamePanelContext.keySets.remove(KeySet.RIGHT);
                 break;
 
-            case 16: //SHIFT
-                gamePanelContext.keySets.add(KeySet.SHIFT);
-                break;
-
+//            case 16: //SHIFT
+//                gamePanelContext.keySets.add(KeySet.SHIFT);
+//                break;
             default://其它按键无视
                 break;
+        }
+        // 蓝方角色放炸弹
+        if (code == KeyEvent.VK_F) {
+            if (this.gamePanelContext.bluePlayer.bombNum > 0) {
+                int x = this.gamePanelContext.bluePlayer.x;
+                int y = this.gamePanelContext.bluePlayer.y;
+                this.gamePanelContext.bluePlayer.bombNum--;
+//                this.gamePanelContext.
+            }
         }
     }
 

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.techotaku;
+package com.techotaku.elements;
 
 import java.awt.Rectangle;
 

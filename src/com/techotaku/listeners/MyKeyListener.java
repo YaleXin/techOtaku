@@ -1,6 +1,5 @@
 package com.techotaku.listeners;
 
-import com.techotaku.BombElement;
 import com.techotaku.GamePanel;
 import com.techotaku.enums.KeySet;
 import com.techotaku.timertasks.MyBombDecTimerTask;
@@ -9,7 +8,6 @@ import com.techotaku.timertasks.MyBombTimerTask;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.Timer;
-import java.util.TimerTask;
 
 /**
  * Author：Yalexin

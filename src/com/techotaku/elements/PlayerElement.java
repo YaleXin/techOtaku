@@ -1,8 +1,9 @@
 /**
  * 
  */
-package com.techotaku;
+package com.techotaku.elements;
 
+import com.techotaku.elements.BaseElement;
 import com.techotaku.enums.Direction;
 
 /**   
