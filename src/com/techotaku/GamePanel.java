@@ -18,16 +18,16 @@ import com.techotaku.enums.KeySet;
 */
 public class GamePanel extends JPanel {
 	
-	PlayerElement bluePlayer;
-	PlayerElement redPlayer;
+	public PlayerElement bluePlayer;
+	public PlayerElement redPlayer;
 	// 墙体列表
-	ArrayList<WallElement> wallElements;
+	public ArrayList<WallElement> wallElements;
 	// 火焰列表
-	ArrayList<FireElement> fireElements;
+	public ArrayList<FireElement> fireElements;
 	// 可破坏障碍物
-	ArrayList<DestructibleObstacle> destructibleObstacles;
+	public ArrayList<DestructibleObstacle> destructibleObstacles;
 	// 按键集合
-	HashSet<KeySet> keySets;
+	public HashSet<KeySet> keySets;
 	public GamePanel() {
 		Init();
 	}
