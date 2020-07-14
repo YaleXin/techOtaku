@@ -25,16 +25,29 @@ public class Data {
 
     // 蓝角色
     public static URL upURL = Data.class.getResource("statics/up.png");
-    public static ImageIcon up = new ImageIcon(upURL);
+    public static ImageIcon blueUp = new ImageIcon(upURL);
 
     public static URL downURL = Data.class.getResource("statics/down.png");
-    public static ImageIcon down = new ImageIcon(downURL);
+    public static ImageIcon blueDown = new ImageIcon(downURL);
 
     public static URL leftURL = Data.class.getResource("statics/left.png");
-    public static ImageIcon left = new ImageIcon(leftURL);
+    public static ImageIcon blueLeft = new ImageIcon(leftURL);
 
     public static URL rightURL = Data.class.getResource("statics/right.png");
-    public static ImageIcon right = new ImageIcon(rightURL);
+    public static ImageIcon blueRight = new ImageIcon(rightURL);
+
+    // 红角色
+    public static URL redUpURL = Data.class.getResource("statics/redUp.png");
+    public static ImageIcon redUp = new ImageIcon(redUpURL);
+
+    public static URL redDownURL = Data.class.getResource("statics/redDown.png");
+    public static ImageIcon redDown = new ImageIcon(redDownURL);
+
+    public static URL redLeftURL = Data.class.getResource("statics/redLeft.png");
+    public static ImageIcon redLeft = new ImageIcon(redLeftURL);
+
+    public static URL redRightURL = Data.class.getResource("statics/redRight.png");
+    public static ImageIcon redRight = new ImageIcon(redRightURL);
 
     public static URL bombURL = Data.class.getResource("statics/bomb.png");
     public static ImageIcon bomb = new ImageIcon(bombURL);

@@ -3,14 +3,19 @@
  */
 package com.techotaku;
 
+
+import com.techotaku.enums.KeySet;
+import com.techotaku.enums.Direction;
+import com.techotaku.enums.Props;
+import com.techotaku.threads.KeyListenerRunnable;
+import com.techotaku.threads.PaintRunnable;
+import com.techotaku.utils.InitTool;
+
 import java.awt.Graphics;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 
 import javax.swing.JPanel;
-
-import com.techotaku.enums.KeySet;
 
 
 
@@ -29,31 +34,16 @@ public class GamePanel extends JPanel {
 	public ArrayList<DestructibleObstacle> destructibleObstacles;
 	// 按键集合
 	public HashSet<KeySet> keySets;
+	// 道具集合
+	public HashSet<Props> propsSet;
 	public GamePanel() {
 		Init();
 	}
 	private void Init() {
-		userInit();
-		mapInit();
-		threadInit();
+		InitTool initTool = new InitTool(this);
+		initTool.gameInit();
 	}
 
-	private void threadInit() {
-		// 初始化按键监听线程
-		KeyListenerRunnable keyListenerRunnable = new KeyListenerRunnable(this);
-		Thread keyListenerThread = new Thread(keyListenerRunnable);
-		keyListenerThread.start();
-	}
-
-
-	private void mapInit() {
-
-	}
-
-	private void userInit() {
-		this.bluePlayer = new PlayerElement(0,0);
-		this.redPlayer = new PlayerElement(500,500);
-	}
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
@@ -66,7 +56,27 @@ public class GamePanel extends JPanel {
 
 
 		// 绘制蓝角色
-//		Data.
+		if(this.bluePlayer.nowDirection == Direction.UP){
+			Data.blueUp.paintIcon(this,g,this.bluePlayer.x,this.bluePlayer.y);
+		}else if(this.bluePlayer.nowDirection == Direction.DOWN){
+			Data.blueDown.paintIcon(this,g,this.bluePlayer.x,this.bluePlayer.y);
+		}else if(this.bluePlayer.nowDirection == Direction.LEFT){
+			Data.blueLeft.paintIcon(this,g,this.bluePlayer.x,this.bluePlayer.y);
+		}else if(this.bluePlayer.nowDirection == Direction.RIGHT){
+			Data.blueRight.paintIcon(this,g,this.bluePlayer.x,this.bluePlayer.y);
+		}
+
+		// 绘制红角色
+		if(this.redPlayer.nowDirection == Direction.UP){
+			Data.redUp.paintIcon(this,g,this.redPlayer.x,this.redPlayer.y);
+		}else if(this.redPlayer.nowDirection == Direction.DOWN){
+			Data.redDown.paintIcon(this,g,this.redPlayer.x,this.redPlayer.y);
+		}else if(this.redPlayer.nowDirection == Direction.LEFT){
+			Data.redLeft.paintIcon(this,g,this.redPlayer.x,this.redPlayer.y);
+		}else if(this.redPlayer.nowDirection == Direction.RIGHT){
+			Data.redRight.paintIcon(this,g,this.redPlayer.x,this.redPlayer.y);
+		}
+
 	}
 
 }

@@ -30,5 +30,18 @@ public class KeyListenerRunnable implements Runnable {
             this.gamePanelContext.bluePlayer.nowDirection = Direction.RIGHT;
         }
 
+        // 红方角色控制
+        if (this.gamePanelContext.keySets.contains(KeySet.UP)){
+            this.gamePanelContext.redPlayer.nowDirection = Direction.UP;
+        }
+        if (this.gamePanelContext.keySets.contains(KeySet.DOWN)){
+            this.gamePanelContext.redPlayer.nowDirection = Direction.DOWN;
+        }
+        if (this.gamePanelContext.keySets.contains(KeySet.LEFT)){
+            this.gamePanelContext.redPlayer.nowDirection = Direction.LEFT;
+        }
+        if (this.gamePanelContext.keySets.contains(KeySet.RIGHT)){
+            this.gamePanelContext.redPlayer.nowDirection = Direction.RIGHT;
+        }
     }
 }

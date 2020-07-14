@@ -10,9 +10,13 @@ import com.techotaku.enums.Direction;
 */
 public class PlayerElement extends BaseElement {
 	// 当前角色的方向
-	Direction nowDirection;
-	int bombNum;
-	int hp;
+    public Direction nowDirection;
+    // 炸弹数量
+	public int bombNum;
+	// 血量
+	public int hp;
+	// 速度
+	public int speed;
 	/**
 	 * @param x 横坐标
 	 * @param y 纵坐标
