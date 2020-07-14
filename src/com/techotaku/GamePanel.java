@@ -5,8 +5,12 @@ package com.techotaku;
 
 import java.awt.Graphics;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 
 import javax.swing.JPanel;
+
+import com.techotaku.enums.KeySet;
 
 
 /**   
@@ -22,6 +26,8 @@ public class GamePanel extends JPanel {
 	ArrayList<FireElement> fireElements;
 	// 可破坏障碍物
 	ArrayList<DestructibleObstacle> destructibleObstacles;
+	// 按键集合
+	HashSet<KeySet> keySets;
 	public GamePanel() {
 		Init();
 	}

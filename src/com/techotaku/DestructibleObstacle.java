@@ -6,6 +6,9 @@ package com.techotaku;
 /**   
 *Author: techOtaku    
 */
+/**
+ * 可破坏障碍物类
+ */
 public class DestructibleObstacle extends BaseElement{
 
 	/**
