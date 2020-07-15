@@ -1,10 +1,14 @@
 package com.techotaku.listeners;
 
 import com.techotaku.GamePanel;
+import com.techotaku.elements.BombElement;
 import com.techotaku.enums.KeySet;
+import com.techotaku.timertasks.MyBombDecTimerTask;
+import com.techotaku.timertasks.MyBombDisappearTimerTask;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Timer;
 
 /**
  * Author：Yalexin
@@ -115,11 +119,38 @@ public class GameKeyListener implements KeyListener {
         }
         // 蓝方角色放炸弹
         if (code == KeyEvent.VK_F) {
+            System.out.println("FFFF");
             if (this.gamePanelContext.bluePlayer.bombNum > 0) {
                 int x = this.gamePanelContext.bluePlayer.x;
                 int y = this.gamePanelContext.bluePlayer.y;
                 this.gamePanelContext.bluePlayer.bombNum--;
-//                this.gamePanelContext.
+                BombElement bombElement = new BombElement(x, y);
+                this.gamePanelContext.bombElements.add(bombElement);
+                System.out.println("添加了");
+                MyBombDisappearTimerTask myBombDisappearTimerTask = new MyBombDisappearTimerTask(this.gamePanelContext,bombElement);
+                Timer timer = new Timer();
+                // 3秒钟后爆炸
+                timer.schedule(myBombDisappearTimerTask,3000);
+                // 5秒钟后炸弹数加一
+                timer.schedule(new MyBombDecTimerTask(this.gamePanelContext.bluePlayer),5000);
+            }
+        }
+        // 红方角色放炸弹
+        if (code == KeyEvent.VK_M){
+            System.out.println("MMMM");
+            if (this.gamePanelContext.redPlayer.bombNum > 0) {
+                int x = this.gamePanelContext.redPlayer.x;
+                int y = this.gamePanelContext.redPlayer.y;
+                this.gamePanelContext.redPlayer.bombNum--;
+                BombElement bombElement = new BombElement(x, y);
+                this.gamePanelContext.bombElements.add(bombElement);
+                System.out.println("添加了");
+                MyBombDisappearTimerTask myBombDisappearTimerTask = new MyBombDisappearTimerTask(this.gamePanelContext,bombElement);
+                Timer timer = new Timer();
+                // 3秒钟后爆炸
+                timer.schedule(myBombDisappearTimerTask,3000);
+                // 5秒钟后炸弹数加一
+                timer.schedule(new MyBombDecTimerTask(this.gamePanelContext.redPlayer),5000);
             }
         }
     }

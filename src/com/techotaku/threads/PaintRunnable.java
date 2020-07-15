@@ -14,7 +14,8 @@ public class PaintRunnable implements Runnable{
     }
     @Override
     public void run() {
-            while (true){
+        // 当游戏不结束就不断刷新页面
+            while (!this.gamePanelContext.isEnd){
                 try {
                     Thread.sleep(40);
                     this.gamePanelContext.repaint();

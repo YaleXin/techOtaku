@@ -1,9 +1,10 @@
 package com.techotaku.listeners;
 
 import com.techotaku.GamePanel;
+import com.techotaku.elements.BombElement;
 import com.techotaku.enums.KeySet;
 import com.techotaku.timertasks.MyBombDecTimerTask;
-import com.techotaku.timertasks.MyBombTimerTask;
+import com.techotaku.timertasks.MyBombDisappearTimerTask;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -71,10 +72,12 @@ public class MyKeyListener extends KeyAdapter {
                 int y = this.gamePanelContext.bluePlayer.y;
                 BombElement bombElement = new BombElement(x,y);
                 Timer timer = new Timer();
+                Timer timer1 = new Timer();
+                System.out.println("开启定时器");
                 // 3秒钟后爆炸
-                timer.schedule(new MyBombTimerTask(),3000);
+                timer.schedule(new MyBombDisappearTimerTask(this.gamePanelContext,bombElement),3000);
                 // 5秒钟后炸弹数加一
-                timer.schedule(new MyBombDecTimerTask(this.gamePanelContext.bluePlayer),5000);
+                timer1.schedule(new MyBombDecTimerTask(this.gamePanelContext.bluePlayer),1000);
             }
         }
 

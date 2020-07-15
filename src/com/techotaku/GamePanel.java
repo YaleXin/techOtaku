@@ -10,7 +10,7 @@ import com.techotaku.enums.Direction;
 import com.techotaku.enums.Props;
 import com.techotaku.utils.InitTool;
 
-import java.awt.Graphics;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashSet;
 
@@ -21,6 +21,11 @@ import javax.swing.JPanel;
 /**   
 *Author: techOtaku    
 */
+
+/**
+ * 画布是 (13*50 = 650)   *    (13*50 = 650)
+ * 元素有效坐标： x:[0 - 600] y:[0 - 600]
+ */
 public class GamePanel extends JPanel {
 	
 	public PlayerElement bluePlayer;
@@ -37,6 +42,7 @@ public class GamePanel extends JPanel {
 	public HashSet<KeySet> keySets;
 	// 道具集合
 	public HashSet<Props> propsSet;
+	public boolean isEnd;
 	public GamePanel() {
 		Init();
 	}
@@ -50,7 +56,7 @@ public class GamePanel extends JPanel {
 		super.paintComponent(g);
 		// 绘制地板
 		for (int i = 0; i < 15; i++)
-			for (int j = 0; j < 14; j++) {
+			for (int j = 0; j < 13; j++) {
 				Data.floor02.paintIcon(this, g, i * 50, j * 50);
 			}
 
@@ -60,6 +66,12 @@ public class GamePanel extends JPanel {
 		for (WallElement element:
 			 this.wallElements) {
 			Data.floor01.paintIcon(this,g,element.x,element.y);
+		}
+
+		// 绘制炸弹
+		for (BombElement bomb :
+				this.bombElements) {
+			Data.bomb.paintIcon(this, g, bomb.x, bomb.y);
 		}
 
 		// 绘制蓝角色
@@ -84,6 +96,22 @@ public class GamePanel extends JPanel {
 			Data.redRight.paintIcon(this,g,this.redPlayer.x,this.redPlayer.y);
 		}
 
+		// 绘制火焰
+		for (int i = 0; i< this.fireElements.size();i++) {
+			Data.fire.paintIcon(this, g, this.fireElements.get(i).x, this.fireElements.get(i).y);
+		}
+		// 角色属性
+		g.setFont(new Font("微软雅黑",Font.BOLD,20));
+		g.drawString("蓝角色血量：" + this.bluePlayer.hp + "炸弹数："+ this.bluePlayer.bombNum,0,670);
+		g.drawString("红角色血量：" + this.redPlayer.hp + "炸弹数："+ this.redPlayer.bombNum,450,670);
+
+		// 游戏结束
+		if (this.isEnd){
+			g.setColor(Color.RED);
+			g.setFont(new Font("微软雅黑",Font.BOLD,50));
+			g.drawString("游戏结束",350,350);
+			g.setColor(Color.BLACK);
+		}
 	}
 
 }

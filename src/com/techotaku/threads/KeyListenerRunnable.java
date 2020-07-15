@@ -28,15 +28,20 @@ public class KeyListenerRunnable implements Runnable {
                     this.gamePanelContext.bluePlayer.nowDirection = Direction.UP;
                     int newY = this.gamePanelContext.bluePlayer.y - this.gamePanelContext.bluePlayer.speed;
                     boolean intersects = false;
+                    boolean intersectsPlayer = false;
                     // 碰墙判定
                     for (WallElement w :
                             this.gamePanelContext.wallElements) {
-                        if (w.intersects(this.gamePanelContext.bluePlayer.x,newY,50,50)){
+                        if (w.intersects(this.gamePanelContext.bluePlayer.x, newY, 50, 50)) {
                             intersects = true;
                             break;
                         }
                     }
-                    if(!intersects && newY >= 0 && newY <= 600){
+                    // 碰到另外的角色
+                    if (this.gamePanelContext.redPlayer.intersects(this.gamePanelContext.bluePlayer.x, newY, 50, 50)) {
+                        intersectsPlayer = true;
+                    }
+                    if (!intersects && !intersectsPlayer && newY >= 0 && newY <= 600) {
                         this.gamePanelContext.bluePlayer.y = newY;
                     }
                 }
@@ -44,15 +49,20 @@ public class KeyListenerRunnable implements Runnable {
                     this.gamePanelContext.bluePlayer.nowDirection = Direction.DOWN;
                     int newY = this.gamePanelContext.bluePlayer.y + this.gamePanelContext.bluePlayer.speed;
                     boolean intersects = false;
+                    boolean intersectsPlayer = false;
                     // 碰墙判定
                     for (WallElement w :
                             this.gamePanelContext.wallElements) {
-                        if (w.intersects(this.gamePanelContext.bluePlayer.x,newY,50,50)){
+                        if (w.intersects(this.gamePanelContext.bluePlayer.x, newY, 50, 50)) {
                             intersects = true;
                             break;
                         }
                     }
-                    if(!intersects && newY >= 0 && newY <= 600){
+                    // 碰到另外的角色
+                    if (this.gamePanelContext.redPlayer.intersects(this.gamePanelContext.bluePlayer.x, newY, 50, 50)) {
+                        intersectsPlayer = true;
+                    }
+                    if (!intersects && !intersectsPlayer && newY >= 0 && newY <= 600) {
                         this.gamePanelContext.bluePlayer.y = newY;
                     }
                 }
@@ -60,15 +70,20 @@ public class KeyListenerRunnable implements Runnable {
                     this.gamePanelContext.bluePlayer.nowDirection = Direction.LEFT;
                     int newX = this.gamePanelContext.bluePlayer.x - this.gamePanelContext.bluePlayer.speed;
                     boolean intersects = false;
+                    boolean intersectsPlayer = false;
                     // 碰墙判定
                     for (WallElement w :
                             this.gamePanelContext.wallElements) {
-                        if (w.intersects(newX,this.gamePanelContext.bluePlayer.y,50,50)){
+                        if (w.intersects(newX, this.gamePanelContext.bluePlayer.y, 50, 50)) {
                             intersects = true;
                             break;
                         }
                     }
-                    if(!intersects && newX >= 0 && newX <= 700){
+                    // 碰到另外的角色
+                    if (this.gamePanelContext.redPlayer.intersects(newX, this.gamePanelContext.bluePlayer.y, 50, 50)) {
+                        intersectsPlayer = true;
+                    }
+                    if (!intersects && !intersectsPlayer && newX >= 0 && newX <= 700) {
                         this.gamePanelContext.bluePlayer.x = newX;
                     }
                 }
@@ -76,15 +91,20 @@ public class KeyListenerRunnable implements Runnable {
                     this.gamePanelContext.bluePlayer.nowDirection = Direction.RIGHT;
                     int newX = this.gamePanelContext.bluePlayer.x + this.gamePanelContext.bluePlayer.speed;
                     boolean intersects = false;
+                    boolean intersectsPlayer = false;
                     // 碰墙判定
                     for (WallElement w :
                             this.gamePanelContext.wallElements) {
-                        if (w.intersects(newX,this.gamePanelContext.bluePlayer.y,50,50)){
+                        if (w.intersects(newX, this.gamePanelContext.bluePlayer.y, 50, 50)) {
                             intersects = true;
                             break;
                         }
                     }
-                    if(!intersects && newX >= 0 && newX <= 700){
+                    // 碰到另外的角色
+                    if (this.gamePanelContext.redPlayer.intersects(newX, this.gamePanelContext.bluePlayer.y, 50, 50)) {
+                        intersectsPlayer = true;
+                    }
+                    if (!intersects && !intersectsPlayer && newX >= 0 && newX <= 700) {
                         this.gamePanelContext.bluePlayer.x = newX;
                     }
                 }
@@ -94,15 +114,20 @@ public class KeyListenerRunnable implements Runnable {
                     this.gamePanelContext.redPlayer.nowDirection = Direction.UP;
                     int newY = this.gamePanelContext.redPlayer.y - this.gamePanelContext.redPlayer.speed;
                     boolean intersects = false;
+                    boolean intersectsPlayer = false;
                     // 碰墙判定
                     for (WallElement w :
                             this.gamePanelContext.wallElements) {
-                        if (w.intersects(this.gamePanelContext.redPlayer.x,newY,50,50)){
+                        if (w.intersects(this.gamePanelContext.redPlayer.x, newY, 50, 50)) {
                             intersects = true;
                             break;
                         }
                     }
-                    if(!intersects && newY >= 0 && newY <= 600){
+                    // 碰到另外的角色
+                    if (this.gamePanelContext.bluePlayer.intersects(this.gamePanelContext.redPlayer.x, newY, 50, 50)) {
+                        intersectsPlayer = true;
+                    }
+                    if (!intersects && !intersectsPlayer && newY >= 0 && newY <= 600) {
                         this.gamePanelContext.redPlayer.y = newY;
                     }
                 }
@@ -110,15 +135,20 @@ public class KeyListenerRunnable implements Runnable {
                     this.gamePanelContext.redPlayer.nowDirection = Direction.DOWN;
                     int newY = this.gamePanelContext.redPlayer.y + this.gamePanelContext.redPlayer.speed;
                     boolean intersects = false;
+                    boolean intersectsPlayer = false;
                     // 碰墙判定
                     for (WallElement w :
                             this.gamePanelContext.wallElements) {
-                        if (w.intersects(this.gamePanelContext.redPlayer.x,newY,50,50)){
+                        if (w.intersects(this.gamePanelContext.redPlayer.x, newY, 50, 50)) {
                             intersects = true;
                             break;
                         }
                     }
-                    if(!intersects && newY >= 0 && newY <= 600){
+                    // 碰到另外的角色
+                    if (this.gamePanelContext.bluePlayer.intersects(this.gamePanelContext.redPlayer.x, newY, 50, 50)) {
+                        intersectsPlayer = true;
+                    }
+                    if (!intersects && !intersectsPlayer && newY >= 0 && newY <= 600) {
                         this.gamePanelContext.redPlayer.y = newY;
                     }
                 }
@@ -126,15 +156,20 @@ public class KeyListenerRunnable implements Runnable {
                     this.gamePanelContext.redPlayer.nowDirection = Direction.LEFT;
                     int newX = this.gamePanelContext.redPlayer.x - this.gamePanelContext.redPlayer.speed;
                     boolean intersects = false;
+                    boolean intersectsPlayer = false;
                     // 碰墙判定
                     for (WallElement w :
                             this.gamePanelContext.wallElements) {
-                        if (w.intersects(newX,this.gamePanelContext.redPlayer.y,50,50)){
+                        if (w.intersects(newX, this.gamePanelContext.redPlayer.y, 50, 50)) {
                             intersects = true;
                             break;
                         }
                     }
-                    if(!intersects && newX >= 0 && newX <= 700){
+                    // 碰到另外的角色
+                    if (this.gamePanelContext.bluePlayer.intersects(newX, this.gamePanelContext.redPlayer.y, 50, 50)) {
+                        intersectsPlayer = true;
+                    }
+                    if (!intersects && !intersectsPlayer && newX >= 0 && newX <= 700) {
                         this.gamePanelContext.redPlayer.x = newX;
                     }
                 }
@@ -142,15 +177,20 @@ public class KeyListenerRunnable implements Runnable {
                     this.gamePanelContext.redPlayer.nowDirection = Direction.RIGHT;
                     int newX = this.gamePanelContext.redPlayer.x + this.gamePanelContext.redPlayer.speed;
                     boolean intersects = false;
+                    boolean intersectsPlayer = false;
                     // 碰墙判定
                     for (WallElement w :
                             this.gamePanelContext.wallElements) {
-                        if (w.intersects(newX,this.gamePanelContext.redPlayer.y,50,50)){
+                        if (w.intersects(newX, this.gamePanelContext.redPlayer.y, 50, 50)) {
                             intersects = true;
                             break;
                         }
                     }
-                    if(!intersects && newX >= 0 && newX <= 700){
+                    // 碰到另外的角色
+                    if (this.gamePanelContext.bluePlayer.intersects(newX, this.gamePanelContext.redPlayer.y, 50, 50)) {
+                        intersectsPlayer = true;
+                    }
+                    if (!intersects && !intersectsPlayer && newX >= 0 && newX <= 700) {
                         this.gamePanelContext.redPlayer.x = newX;
                     }
                 }

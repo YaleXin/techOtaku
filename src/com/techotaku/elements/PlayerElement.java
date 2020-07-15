@@ -18,6 +18,8 @@ public class PlayerElement extends BaseElement {
 	public int hp;
 	// 速度
 	public int speed;
+	// 无敌状态
+	public boolean isInvincible;
 	/**
 	 * @param x 横坐标
 	 * @param y 纵坐标

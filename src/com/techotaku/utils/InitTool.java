@@ -5,10 +5,13 @@ import com.techotaku.elements.PlayerElement;
 import com.techotaku.enums.Direction;
 import com.techotaku.listeners.GameKeyListener;
 
+import com.techotaku.listeners.MyActionListener;
 import com.techotaku.threads.KeyListenerRunnable;
 import com.techotaku.threads.PaintRunnable;
 import com.techotaku.elements.WallElement;
 
+
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.HashSet;
 
@@ -27,9 +30,13 @@ public class InitTool {
         this.gamePanelContext = gamePanelContext;
     }
     public void gameInit(){
+        this.gamePanelContext.isEnd = false;
         this.gamePanelContext.keySets = new HashSet<>();
         this.gamePanelContext.propsSet = new HashSet<>();
         this.gamePanelContext.wallElements = new ArrayList<>();
+        this.gamePanelContext.bombElements = new ArrayList<>();
+        this.gamePanelContext.fireElements = new ArrayList<>();
+
 
 //        Timer timer = new Timer(40, new MyActionListener(this.gamePanelContext));
 //        timer.start();
@@ -40,6 +47,9 @@ public class InitTool {
     }
 
     private void eventInit() {
+        // 定时器 以 ms 为单位 delay：执行间隔
+        Timer timer = new Timer(25, new MyActionListener(this.gamePanelContext));
+        timer.start();
         // 获得焦点事件
         this.gamePanelContext.setFocusable(true);
         GameKeyListener myKeyListener = new GameKeyListener(this.gamePanelContext);
@@ -133,11 +143,14 @@ public class InitTool {
         this.gamePanelContext.bluePlayer.setNowDirection(Direction.RIGHT);
         this.gamePanelContext.bluePlayer.speed = 5;
         this.gamePanelContext.bluePlayer.hp = 100;
-
+        this.gamePanelContext.bluePlayer.bombNum = 10;
+        this.gamePanelContext.bluePlayer.isInvincible = false;
 
         this.gamePanelContext.redPlayer = new PlayerElement(700,600);
         this.gamePanelContext.redPlayer.setNowDirection(Direction.LEFT);
         this.gamePanelContext.redPlayer.speed = 5;
         this.gamePanelContext.redPlayer.hp = 100;
+        this.gamePanelContext.redPlayer.bombNum = 10;
+        this.gamePanelContext.redPlayer.isInvincible = false;
     }
 }
