@@ -2,6 +2,7 @@ package com.techotaku.listeners;
 
 import com.techotaku.GamePanel;
 import com.techotaku.elements.FireElement;
+import com.techotaku.elements.PropsElement;
 import com.techotaku.timertasks.MyPlayerTimerTask;
 
 import java.awt.event.ActionEvent;
@@ -49,6 +50,20 @@ public class MyActionListener implements ActionListener {
 
         if (this.gamePanelContext.bluePlayer.hp <= 0 || this.gamePanelContext.redPlayer.hp <= 0) {
             this.gamePanelContext.isEnd = true;
+        }
+
+
+        for (int i = 0 ;i < this.gamePanelContext.propsElements.size();) {
+            PropsElement props = this.gamePanelContext.propsElements.get(i);
+            if (props.intersects(this.gamePanelContext.bluePlayer)){
+                this.gamePanelContext.bluePlayer.hp += 100;
+                this.gamePanelContext.propsElements.remove(props);
+            }else if (props.intersects(this.gamePanelContext.redPlayer)){
+                this.gamePanelContext.redPlayer.hp += 100;
+                this.gamePanelContext.propsElements.remove(props);
+            }else {
+                i++;
+            }
         }
     }
 }

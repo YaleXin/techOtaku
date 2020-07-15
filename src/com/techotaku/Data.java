@@ -58,5 +58,9 @@ public class Data {
     public static URL destr01URL = Data.class.getResource("statics/destr01.png");
     public static ImageIcon destr01 = new ImageIcon(destr01URL);
 
+    public static URL bloodBottleUrl = Data.class.getResource("statics/bloodBottle.png");
+    public static ImageIcon bloodBottle = new ImageIcon(bloodBottleUrl);
 
+    public static URL shieldingUrl = Data.class.getResource("statics/shielding.png");
+    public static ImageIcon shielding = new ImageIcon(shieldingUrl);
 }

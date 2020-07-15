@@ -1,14 +1,16 @@
 package com.techotaku.utils;
 
 import com.techotaku.GamePanel;
+import com.techotaku.elements.DestructibleObstacleElement;
 import com.techotaku.elements.PlayerElement;
 import com.techotaku.enums.Direction;
 import com.techotaku.listeners.GameKeyListener;
 
 import com.techotaku.listeners.MyActionListener;
 import com.techotaku.threads.KeyListenerRunnable;
-import com.techotaku.threads.PaintRunnable;
+
 import com.techotaku.elements.WallElement;
+import com.techotaku.timertasks.MyPaintTimerTask;
 
 
 import javax.swing.*;
@@ -32,14 +34,12 @@ public class InitTool {
     public void gameInit(){
         this.gamePanelContext.isEnd = false;
         this.gamePanelContext.keySets = new HashSet<>();
-        this.gamePanelContext.propsSet = new HashSet<>();
+        this.gamePanelContext.propsElements = new ArrayList<>();
         this.gamePanelContext.wallElements = new ArrayList<>();
         this.gamePanelContext.bombElements = new ArrayList<>();
         this.gamePanelContext.fireElements = new ArrayList<>();
+        this.gamePanelContext.destructibleObstacleElements = new ArrayList<>();
 
-
-//        Timer timer = new Timer(40, new MyActionListener(this.gamePanelContext));
-//        timer.start();
         userInit();
         mapInit();
         threadInit();
@@ -50,6 +50,10 @@ public class InitTool {
         // 定时器 以 ms 为单位 delay：执行间隔
         Timer timer = new Timer(25, new MyActionListener(this.gamePanelContext));
         timer.start();
+        // 改用定时器方式，避免加锁
+        java.util.Timer timer1 = new java.util.Timer();
+        timer1.schedule(new MyPaintTimerTask(this.gamePanelContext),0,40);
+
         // 获得焦点事件
         this.gamePanelContext.setFocusable(true);
         GameKeyListener myKeyListener = new GameKeyListener(this.gamePanelContext);
@@ -64,9 +68,10 @@ public class InitTool {
         keyListenerThread.start();
 
         // 绘图线程
-        PaintRunnable paintRunnable = new PaintRunnable(this.gamePanelContext);
-        Thread paintThread = new Thread(paintRunnable);
-        paintThread.start();
+//        PaintRunnable paintRunnable = new PaintRunnable(this.gamePanelContext);
+//        Thread paintThread = new Thread(paintRunnable);
+//        paintThread.start();
+
     }
 
 
@@ -136,6 +141,12 @@ public class InitTool {
         this.gamePanelContext.wallElements.add(new WallElement(550, 550));
         this.gamePanelContext.wallElements.add(new WallElement(600, 550));
         this.gamePanelContext.wallElements.add(new WallElement(650, 550));
+
+        // 初始化可破坏障碍物
+        this.gamePanelContext.destructibleObstacleElements.add(new DestructibleObstacleElement(100,0));
+        this.gamePanelContext.destructibleObstacleElements.add(new DestructibleObstacleElement(150,0));
+        this.gamePanelContext.destructibleObstacleElements.add(new DestructibleObstacleElement(200,0));
+        this.gamePanelContext.destructibleObstacleElements.add(new DestructibleObstacleElement(250,0));
     }
 
     private void userInit() {

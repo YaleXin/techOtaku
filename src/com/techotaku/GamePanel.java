@@ -35,13 +35,13 @@ public class GamePanel extends JPanel {
 	// 火焰列表
 	public ArrayList<FireElement> fireElements;
 	// 可破坏障碍物
-	public ArrayList<DestructibleObstacle> destructibleObstacles;
+	public ArrayList<DestructibleObstacleElement> destructibleObstacleElements;
 	// 炸弹
 	public ArrayList<BombElement> bombElements;
+	// 道具
+	public ArrayList<PropsElement> propsElements;
 	// 按键集合
 	public HashSet<KeySet> keySets;
-	// 道具集合
-	public HashSet<Props> propsSet;
 	public boolean isEnd;
 	public GamePanel() {
 		Init();
@@ -96,6 +96,12 @@ public class GamePanel extends JPanel {
 			Data.redRight.paintIcon(this,g,this.redPlayer.x,this.redPlayer.y);
 		}
 
+		// 绘制障碍物
+		for (DestructibleObstacleElement dstr :
+				this.destructibleObstacleElements) {
+			Data.destr01.paintIcon(this, g, dstr.x, dstr.y);
+		}
+
 		// 绘制火焰
 		for (int i = 0; i< this.fireElements.size();i++) {
 			Data.fire.paintIcon(this, g, this.fireElements.get(i).x, this.fireElements.get(i).y);
@@ -105,6 +111,17 @@ public class GamePanel extends JPanel {
 		g.drawString("蓝角色血量：" + this.bluePlayer.hp + "炸弹数："+ this.bluePlayer.bombNum,0,670);
 		g.drawString("红角色血量：" + this.redPlayer.hp + "炸弹数："+ this.redPlayer.bombNum,450,670);
 
+		// 画道具
+		for (PropsElement props :
+				this.propsElements) {
+			if (props.type == Props.BLOOD_BOTTLE){
+				Data.bloodBottle.paintIcon(this,g,props.x,props.y);
+			}else if(props.type == Props.SHIELDING){
+				Data.shielding.paintIcon(this,g,props.x,props.y);
+			}
+		}
+		
+		
 		// 游戏结束
 		if (this.isEnd){
 			g.setColor(Color.RED);

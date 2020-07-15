@@ -2,6 +2,7 @@ package com.techotaku.timertasks;
 
 import com.techotaku.GamePanel;
 import com.techotaku.elements.BombElement;
+import com.techotaku.elements.DestructibleObstacleElement;
 import com.techotaku.elements.FireElement;
 import com.techotaku.elements.WallElement;
 
