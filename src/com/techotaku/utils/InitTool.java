@@ -10,6 +10,7 @@ import com.techotaku.listeners.MyActionListener;
 import com.techotaku.threads.KeyListenerRunnable;
 
 import com.techotaku.elements.WallElement;
+import com.techotaku.threads.PlayerInvincibleRunnable;
 import com.techotaku.timertasks.MyPaintTimerTask;
 
 
@@ -66,6 +67,12 @@ public class InitTool {
         KeyListenerRunnable keyListenerRunnable = new KeyListenerRunnable(this.gamePanelContext);
         Thread keyListenerThread = new Thread(keyListenerRunnable);
         keyListenerThread.start();
+
+
+        // 玩家无敌状态修改线程
+        PlayerInvincibleRunnable playerInvincibleRunnable = new PlayerInvincibleRunnable(this.gamePanelContext);
+        Thread playerInvincibleThread = new Thread(playerInvincibleRunnable);
+        playerInvincibleThread.start();
 
         // 绘图线程
 //        PaintRunnable paintRunnable = new PaintRunnable(this.gamePanelContext);
@@ -156,6 +163,7 @@ public class InitTool {
         this.gamePanelContext.bluePlayer.hp = 100;
         this.gamePanelContext.bluePlayer.bombNum = 10;
         this.gamePanelContext.bluePlayer.isInvincible = false;
+        this.gamePanelContext.bluePlayer.invincibleTime = 0;
 
         this.gamePanelContext.redPlayer = new PlayerElement(700,600);
         this.gamePanelContext.redPlayer.setNowDirection(Direction.LEFT);
@@ -163,5 +171,6 @@ public class InitTool {
         this.gamePanelContext.redPlayer.hp = 100;
         this.gamePanelContext.redPlayer.bombNum = 10;
         this.gamePanelContext.redPlayer.isInvincible = false;
+        this.gamePanelContext.redPlayer.invincibleTime = 0;
     }
 }

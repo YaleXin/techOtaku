@@ -107,9 +107,11 @@ public class GamePanel extends JPanel {
 			Data.fire.paintIcon(this, g, this.fireElements.get(i).x, this.fireElements.get(i).y);
 		}
 		// 角色属性
-		g.setFont(new Font("微软雅黑",Font.BOLD,20));
-		g.drawString("蓝角色血量：" + this.bluePlayer.hp + "炸弹数："+ this.bluePlayer.bombNum,0,670);
-		g.drawString("红角色血量：" + this.redPlayer.hp + "炸弹数："+ this.redPlayer.bombNum,450,670);
+		g.setFont(new Font("微软雅黑",Font.BOLD,16));
+		String bluePlayerAttribute = "蓝角色血量：" + this.bluePlayer.hp + " 炸弹数："+ this.bluePlayer.bombNum +" 无敌时间：" + this.bluePlayer.invincibleTime;
+		g.drawString(bluePlayerAttribute,0,670);
+		String redPlayerAttribute = "红角色血量：" + this.redPlayer.hp + " 炸弹数："+ this.redPlayer.bombNum +" 无敌时间：" + this.redPlayer.invincibleTime;
+		g.drawString(redPlayerAttribute,350,670);
 
 		// 画道具
 		for (PropsElement props :

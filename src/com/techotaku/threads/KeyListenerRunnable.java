@@ -1,6 +1,7 @@
 package com.techotaku.threads;
 
 import com.techotaku.GamePanel;
+import com.techotaku.elements.DestructibleObstacleElement;
 import com.techotaku.elements.WallElement;
 import com.techotaku.enums.Direction;
 import com.techotaku.enums.KeySet;
@@ -37,6 +38,14 @@ public class KeyListenerRunnable implements Runnable {
                             break;
                         }
                     }
+                    // 碰障碍物
+                    for (DestructibleObstacleElement d :
+                            this.gamePanelContext.destructibleObstacleElements) {
+                        if (d.intersects(this.gamePanelContext.bluePlayer.x, newY, 50, 50)) {
+                            intersects = true;
+                            break;
+                        }
+                    }
                     // 碰到另外的角色
                     if (this.gamePanelContext.redPlayer.intersects(this.gamePanelContext.bluePlayer.x, newY, 50, 50)) {
                         intersectsPlayer = true;
@@ -54,6 +63,14 @@ public class KeyListenerRunnable implements Runnable {
                     for (WallElement w :
                             this.gamePanelContext.wallElements) {
                         if (w.intersects(this.gamePanelContext.bluePlayer.x, newY, 50, 50)) {
+                            intersects = true;
+                            break;
+                        }
+                    }
+                    // 碰障碍物
+                    for (DestructibleObstacleElement d :
+                            this.gamePanelContext.destructibleObstacleElements) {
+                        if (d.intersects(this.gamePanelContext.bluePlayer.x, newY, 50, 50)) {
                             intersects = true;
                             break;
                         }
@@ -79,6 +96,14 @@ public class KeyListenerRunnable implements Runnable {
                             break;
                         }
                     }
+                    // 碰障碍物
+                    for (DestructibleObstacleElement d :
+                            this.gamePanelContext.destructibleObstacleElements) {
+                        if (d.intersects(newX,this.gamePanelContext.bluePlayer.y, 50, 50)) {
+                            intersects = true;
+                            break;
+                        }
+                    }
                     // 碰到另外的角色
                     if (this.gamePanelContext.redPlayer.intersects(newX, this.gamePanelContext.bluePlayer.y, 50, 50)) {
                         intersectsPlayer = true;
@@ -96,6 +121,14 @@ public class KeyListenerRunnable implements Runnable {
                     for (WallElement w :
                             this.gamePanelContext.wallElements) {
                         if (w.intersects(newX, this.gamePanelContext.bluePlayer.y, 50, 50)) {
+                            intersects = true;
+                            break;
+                        }
+                    }
+                    // 碰障碍物
+                    for (DestructibleObstacleElement d :
+                            this.gamePanelContext.destructibleObstacleElements) {
+                        if (d.intersects(newX,this.gamePanelContext.bluePlayer.y, 50, 50)) {
                             intersects = true;
                             break;
                         }
@@ -123,6 +156,14 @@ public class KeyListenerRunnable implements Runnable {
                             break;
                         }
                     }
+                    // 碰障碍物
+                    for (DestructibleObstacleElement d :
+                            this.gamePanelContext.destructibleObstacleElements) {
+                        if (d.intersects(this.gamePanelContext.redPlayer.x, newY, 50, 50)) {
+                            intersects = true;
+                            break;
+                        }
+                    }
                     // 碰到另外的角色
                     if (this.gamePanelContext.bluePlayer.intersects(this.gamePanelContext.redPlayer.x, newY, 50, 50)) {
                         intersectsPlayer = true;
@@ -140,6 +181,14 @@ public class KeyListenerRunnable implements Runnable {
                     for (WallElement w :
                             this.gamePanelContext.wallElements) {
                         if (w.intersects(this.gamePanelContext.redPlayer.x, newY, 50, 50)) {
+                            intersects = true;
+                            break;
+                        }
+                    }
+                    // 碰障碍物
+                    for (DestructibleObstacleElement d :
+                            this.gamePanelContext.destructibleObstacleElements) {
+                        if (d.intersects(this.gamePanelContext.redPlayer.x, newY, 50, 50)) {
                             intersects = true;
                             break;
                         }
@@ -165,6 +214,14 @@ public class KeyListenerRunnable implements Runnable {
                             break;
                         }
                     }
+                    // 碰障碍物
+                    for (DestructibleObstacleElement d :
+                            this.gamePanelContext.destructibleObstacleElements) {
+                        if (d.intersects(newX,this.gamePanelContext.redPlayer.y, 50, 50)) {
+                            intersects = true;
+                            break;
+                        }
+                    }
                     // 碰到另外的角色
                     if (this.gamePanelContext.bluePlayer.intersects(newX, this.gamePanelContext.redPlayer.y, 50, 50)) {
                         intersectsPlayer = true;
@@ -182,6 +239,14 @@ public class KeyListenerRunnable implements Runnable {
                     for (WallElement w :
                             this.gamePanelContext.wallElements) {
                         if (w.intersects(newX, this.gamePanelContext.redPlayer.y, 50, 50)) {
+                            intersects = true;
+                            break;
+                        }
+                    }
+                    // 碰障碍物
+                    for (DestructibleObstacleElement d :
+                            this.gamePanelContext.destructibleObstacleElements) {
+                        if (d.intersects(newX,this.gamePanelContext.redPlayer.y, 50, 50)) {
                             intersects = true;
                             break;
                         }

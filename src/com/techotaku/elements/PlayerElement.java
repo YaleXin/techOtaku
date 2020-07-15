@@ -20,6 +20,8 @@ public class PlayerElement extends BaseElement {
 	public int speed;
 	// 无敌状态
 	public boolean isInvincible;
+	// 无敌时间
+	public int invincibleTime;
 	/**
 	 * @param x 横坐标
 	 * @param y 纵坐标
