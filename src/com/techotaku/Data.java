@@ -63,4 +63,7 @@ public class Data {
 
     public static URL shieldingUrl = Data.class.getResource("statics/shielding.png");
     public static ImageIcon shielding = new ImageIcon(shieldingUrl);
+
+//    public static URL testUrl = Data.class.getResource("statics/test.jpg");
+//    public static ImageIcon test = new ImageIcon(testUrl);
 }

@@ -1,6 +1,8 @@
 package com.techotaku;
 
 
+import com.techotaku.threads.GameMusicPlayer;
+
 import javax.swing.*;
 
 /**
@@ -22,5 +24,8 @@ public class StartGame {
         jFrame.add(gamePanel);
         jFrame.setVisible(true);
         // 正常的游戏界面都是在面板上面的
+        //背景音乐
+        GameMusicPlayer musicPlayer = new GameMusicPlayer();
+        musicPlayer.start();
     }
 }

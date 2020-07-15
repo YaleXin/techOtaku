@@ -1,6 +1,5 @@
 package com.techotaku.elements;
 
-import com.yalexin.bomb.BaseElement;
 
 import java.util.Timer;
 import java.util.TimerTask;

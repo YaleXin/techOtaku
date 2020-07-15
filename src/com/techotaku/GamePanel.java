@@ -57,7 +57,7 @@ public class GamePanel extends JPanel {
 		// 绘制地板
 		for (int i = 0; i < 15; i++)
 			for (int j = 0; j < 13; j++) {
-				Data.floor02.paintIcon(this, g, i * 50, j * 50);
+				Data.floor03.paintIcon(this, g, i * 50, j * 50);
 			}
 
 
