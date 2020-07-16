@@ -91,7 +91,7 @@ public class MyBombDisappearTimerTask extends TimerTask {
                 System.out.println("左面");
             }
         }
-        if (this.bombElement.x + 50 >= 0) {
+        if (this.bombElement.x + 50 <= 700) {
             boolean isOk = true;
             for (WallElement wall : this.gamePanelContext.wallElements) {
                 if (wall.intersects(this.bombElement.x + 50, this.bombElement.y, 50, 50)) {
