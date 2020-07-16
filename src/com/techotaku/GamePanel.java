@@ -50,10 +50,10 @@ public class GamePanel extends JPanel {
     public boolean isEnd;
 
     public GamePanel() {
-        Init();
+        init();
     }
 
-    private void Init() {
+    public void init() {
         InitTool initTool = new InitTool(this);
         initTool.gameInit();
     }

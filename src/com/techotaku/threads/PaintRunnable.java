@@ -5,6 +5,11 @@ import com.techotaku.GamePanel;
 /**
  *Author: techOtaku
  */
+
+/**
+ * 暂时弃用
+ */
+@Deprecated
 public class PaintRunnable implements Runnable{
     GamePanel gamePanelContext = null;
 

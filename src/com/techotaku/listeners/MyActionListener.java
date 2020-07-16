@@ -38,8 +38,8 @@ public class MyActionListener implements ActionListener {
                     Thread thread = new Thread(gameShortMusicRunnable);
                     thread.start();
 
-                    // 受伤后，5秒钟内无敌
-                    this.gamePanelContext.redPlayer.invincibleTime = 5;
+                    // 受伤后，3秒钟内无敌
+                    this.gamePanelContext.redPlayer.invincibleTime = 3;
                 }
             }
             if (next.intersects(this.gamePanelContext.bluePlayer)) {
@@ -51,8 +51,8 @@ public class MyActionListener implements ActionListener {
                     Thread thread = new Thread(gameShortMusicRunnable);
                     thread.start();
 
-                    // 受伤后，5秒钟内无敌
-                    this.gamePanelContext.bluePlayer.invincibleTime = 5;
+                    // 受伤后，3秒钟内无敌
+                    this.gamePanelContext.bluePlayer.invincibleTime = 3;
                 }
             }
         }
