@@ -5,8 +5,7 @@ import java.io.*;
 import java.util.ArrayList;
 
 /**
- * Author：Yalexin
- * Email： 181303209@yzu.edu.cn
+ *Author: techOtaku
  */
 //背景音乐
 public class GameMusicPlayer extends Thread{

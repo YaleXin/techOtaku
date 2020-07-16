@@ -1,7 +1,6 @@
 /BaseElement.class
 /BombElement$MyTimeTask.class
 /BombElement.class
-/DestructibleObstacle.class
 /DestructibleObstacleElement.class
 /FireElement.class
 /PlayerElement.class

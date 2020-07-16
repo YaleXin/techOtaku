@@ -2,11 +2,13 @@ package com.techotaku.utils;
 
 import com.techotaku.GamePanel;
 import com.techotaku.elements.DestructibleObstacleElement;
+import com.techotaku.elements.FireElement;
 import com.techotaku.elements.PlayerElement;
 import com.techotaku.enums.Direction;
 import com.techotaku.listeners.GameKeyListener;
 
 import com.techotaku.listeners.MyActionListener;
+import com.techotaku.threads.GameMusicPlayer;
 import com.techotaku.threads.KeyListenerRunnable;
 
 import com.techotaku.elements.WallElement;
@@ -17,11 +19,12 @@ import com.techotaku.timertasks.MyPaintTimerTask;
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Vector;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 
 /**
- * Author：Yalexin
- * Email： 181303209@yzu.edu.cn
+ *Author: techOtaku
  */
 
 /**
@@ -35,12 +38,16 @@ public class InitTool {
     public void gameInit(){
         this.gamePanelContext.isEnd = false;
         this.gamePanelContext.keySets = new HashSet<>();
-        this.gamePanelContext.propsElements = new ArrayList<>();
+        this.gamePanelContext.propsElements = new CopyOnWriteArrayList<>();
+//        this.gamePanelContext.propsElements = new ArrayList<>();
         this.gamePanelContext.wallElements = new ArrayList<>();
-        this.gamePanelContext.bombElements = new ArrayList<>();
-        this.gamePanelContext.fireElements = new ArrayList<>();
-        this.gamePanelContext.destructibleObstacleElements = new ArrayList<>();
-
+        this.gamePanelContext.bombElements = new CopyOnWriteArrayList<>();
+//        this.gamePanelContext.bombElements = new ArrayList<>();
+//        this.gamePanelContext.fireElements = new ArrayList<>();
+//        this.gamePanelContext.fireElements = new Vector<>();
+        this.gamePanelContext.fireElements = new CopyOnWriteArrayList<>();
+//        this.gamePanelContext.destructibleObstacleElements = new ArrayList<>();
+        this.gamePanelContext.destructibleObstacleElements = new CopyOnWriteArrayList<>();
         userInit();
         mapInit();
         threadInit();
@@ -63,6 +70,11 @@ public class InitTool {
 
 
     private void threadInit() {
+        // 背景音乐线程
+        GameMusicPlayer musicPlayer = new GameMusicPlayer();
+        musicPlayer.start();
+
+
         // 初始化按键监听线程
         KeyListenerRunnable keyListenerRunnable = new KeyListenerRunnable(this.gamePanelContext);
         Thread keyListenerThread = new Thread(keyListenerRunnable);
@@ -84,6 +96,7 @@ public class InitTool {
 
     private void mapInit() {
         // 初始化墙体
+        this.gamePanelContext.wallElements.add(new WallElement(50, 50));
         this.gamePanelContext.wallElements.add(new WallElement(100, 50));
         this.gamePanelContext.wallElements.add(new WallElement(150, 50));
         this.gamePanelContext.wallElements.add(new WallElement(250, 50));
@@ -150,10 +163,115 @@ public class InitTool {
         this.gamePanelContext.wallElements.add(new WallElement(650, 550));
 
         // 初始化可破坏障碍物
-        this.gamePanelContext.destructibleObstacleElements.add(new DestructibleObstacleElement(100,0));
-        this.gamePanelContext.destructibleObstacleElements.add(new DestructibleObstacleElement(150,0));
-        this.gamePanelContext.destructibleObstacleElements.add(new DestructibleObstacleElement(200,0));
-        this.gamePanelContext.destructibleObstacleElements.add(new DestructibleObstacleElement(250,0));
+        this.gamePanelContext.destructibleObstacleElements.add(new  DestructibleObstacleElement(200, 0));
+        this.gamePanelContext.destructibleObstacleElements.add(new  DestructibleObstacleElement(250, 0));
+
+        this.gamePanelContext.destructibleObstacleElements.add(new  DestructibleObstacleElement(0, 100));
+        this.gamePanelContext.destructibleObstacleElements.add(new  DestructibleObstacleElement(250, 100));
+        this.gamePanelContext.destructibleObstacleElements.add(new  DestructibleObstacleElement(550, 100));
+        this.gamePanelContext.destructibleObstacleElements.add(new  DestructibleObstacleElement(650, 100));
+
+        this.gamePanelContext.destructibleObstacleElements.add(new  DestructibleObstacleElement(50, 150));
+        this.gamePanelContext.destructibleObstacleElements.add(new  DestructibleObstacleElement(100, 150));
+        this.gamePanelContext.destructibleObstacleElements.add(new  DestructibleObstacleElement(150, 150));
+        this.gamePanelContext.destructibleObstacleElements.add(new  DestructibleObstacleElement(650, 150));
+
+        this.gamePanelContext.destructibleObstacleElements.add(new  DestructibleObstacleElement(150, 200));
+        this.gamePanelContext.destructibleObstacleElements.add(new  DestructibleObstacleElement(250, 200));
+        this.gamePanelContext.destructibleObstacleElements.add(new  DestructibleObstacleElement(300, 200));
+        this.gamePanelContext.destructibleObstacleElements.add(new  DestructibleObstacleElement(400, 200));
+        this.gamePanelContext.destructibleObstacleElements.add(new  DestructibleObstacleElement(450, 200));
+        this.gamePanelContext.destructibleObstacleElements.add(new  DestructibleObstacleElement(550, 200));
+
+        this.gamePanelContext.destructibleObstacleElements.add(new  DestructibleObstacleElement(0, 250));
+        this.gamePanelContext.destructibleObstacleElements.add(new  DestructibleObstacleElement(450, 250));
+        this.gamePanelContext.destructibleObstacleElements.add(new  DestructibleObstacleElement(550, 250));
+        this.gamePanelContext.destructibleObstacleElements.add(new  DestructibleObstacleElement(650, 250));
+
+        this.gamePanelContext.destructibleObstacleElements.add(new  DestructibleObstacleElement(450,350));
+
+        this.gamePanelContext.destructibleObstacleElements.add(new DestructibleObstacleElement(150, 400));
+        this.gamePanelContext.destructibleObstacleElements.add(new DestructibleObstacleElement(250, 400));
+        this.gamePanelContext.destructibleObstacleElements.add(new DestructibleObstacleElement(450, 400));
+
+
+        this.gamePanelContext.destructibleObstacleElements.add(new DestructibleObstacleElement(50, 450));
+        this.gamePanelContext.destructibleObstacleElements.add(new DestructibleObstacleElement(100, 450));
+        this.gamePanelContext.destructibleObstacleElements.add(new DestructibleObstacleElement(150, 450));
+        this.gamePanelContext.destructibleObstacleElements.add(new DestructibleObstacleElement(350, 450));
+        this.gamePanelContext.destructibleObstacleElements.add(new DestructibleObstacleElement(550, 450));
+        this.gamePanelContext.destructibleObstacleElements.add(new DestructibleObstacleElement(600, 450));
+        this.gamePanelContext.destructibleObstacleElements.add(new DestructibleObstacleElement(650, 450));
+
+        this.gamePanelContext.destructibleObstacleElements.add(new DestructibleObstacleElement(0, 500));
+        this.gamePanelContext.destructibleObstacleElements.add(new DestructibleObstacleElement(50, 500));
+        this.gamePanelContext.destructibleObstacleElements.add(new DestructibleObstacleElement(200, 500));
+        this.gamePanelContext.destructibleObstacleElements.add(new DestructibleObstacleElement(300, 500));
+        this.gamePanelContext.destructibleObstacleElements.add(new DestructibleObstacleElement(350, 500));
+        this.gamePanelContext.destructibleObstacleElements.add(new DestructibleObstacleElement(450, 500));
+        this.gamePanelContext.destructibleObstacleElements.add(new DestructibleObstacleElement(500, 500));
+        this.gamePanelContext.destructibleObstacleElements.add(new DestructibleObstacleElement(550, 500));
+        this.gamePanelContext.destructibleObstacleElements.add(new DestructibleObstacleElement(650, 500));
+        this.gamePanelContext.destructibleObstacleElements.add(new DestructibleObstacleElement(700, 500));
+
+        this.gamePanelContext.destructibleObstacleElements.add(new DestructibleObstacleElement(200, 550));
+        this.gamePanelContext.destructibleObstacleElements.add(new DestructibleObstacleElement(350, 550));
+
+        this.gamePanelContext.destructibleObstacleElements.add(new DestructibleObstacleElement(200, 600));
+        this.gamePanelContext.destructibleObstacleElements.add(new DestructibleObstacleElement(450, 600));
+        //绿
+        this.gamePanelContext.destructibleObstacleElements.add(new DestructibleObstacleElement(100, 0));
+        this.gamePanelContext.destructibleObstacleElements.add(new DestructibleObstacleElement(150, 0));
+        this.gamePanelContext.destructibleObstacleElements.add(new DestructibleObstacleElement(350, 0));
+        this.gamePanelContext.destructibleObstacleElements.add(new DestructibleObstacleElement(400, 0));
+        this.gamePanelContext.destructibleObstacleElements.add(new DestructibleObstacleElement(450, 0));
+        this.gamePanelContext.destructibleObstacleElements.add(new DestructibleObstacleElement(550, 0));
+        this.gamePanelContext.destructibleObstacleElements.add(new DestructibleObstacleElement(600, 0));
+
+        this.gamePanelContext.destructibleObstacleElements.add(new DestructibleObstacleElement(350, 50));
+        this.gamePanelContext.destructibleObstacleElements.add(new DestructibleObstacleElement(500, 50));
+
+        this.gamePanelContext.destructibleObstacleElements.add(new DestructibleObstacleElement(50, 100));
+        this.gamePanelContext.destructibleObstacleElements.add(new DestructibleObstacleElement(200, 100));
+        this.gamePanelContext.destructibleObstacleElements.add(new  DestructibleObstacleElement(300, 100));
+        this.gamePanelContext.destructibleObstacleElements.add(new  DestructibleObstacleElement(350, 100));
+        this.gamePanelContext.destructibleObstacleElements.add(new  DestructibleObstacleElement(450, 100));
+        this.gamePanelContext.destructibleObstacleElements.add(new  DestructibleObstacleElement(500, 100));
+
+        this.gamePanelContext.destructibleObstacleElements.add(new  DestructibleObstacleElement(650, 150));
+
+        this.gamePanelContext.destructibleObstacleElements.add(new  DestructibleObstacleElement(50, 250));
+        this.gamePanelContext.destructibleObstacleElements.add(new  DestructibleObstacleElement(100, 250));
+        this.gamePanelContext.destructibleObstacleElements.add(new  DestructibleObstacleElement(600, 250));
+
+        this.gamePanelContext.destructibleObstacleElements.add(new  DestructibleObstacleElement(0, 300));
+        this.gamePanelContext.destructibleObstacleElements.add(new  DestructibleObstacleElement(150, 300));
+        this.gamePanelContext.destructibleObstacleElements.add(new  DestructibleObstacleElement(250, 300));
+
+        this.gamePanelContext.destructibleObstacleElements.add(new  DestructibleObstacleElement(0, 350));
+        this.gamePanelContext.destructibleObstacleElements.add(new  DestructibleObstacleElement(50, 350));
+        this.gamePanelContext.destructibleObstacleElements.add(new  DestructibleObstacleElement(100, 350));
+        this.gamePanelContext.destructibleObstacleElements.add(new  DestructibleObstacleElement(550, 350));
+        this.gamePanelContext.destructibleObstacleElements.add(new  DestructibleObstacleElement(600, 350));
+
+        this.gamePanelContext.destructibleObstacleElements.add(new  DestructibleObstacleElement(300, 400));
+        this.gamePanelContext.destructibleObstacleElements.add(new  DestructibleObstacleElement(350, 400));
+        this.gamePanelContext.destructibleObstacleElements.add(new  DestructibleObstacleElement(450, 400));
+        this.gamePanelContext.destructibleObstacleElements.add(new  DestructibleObstacleElement(550, 400));
+
+        this.gamePanelContext.destructibleObstacleElements.add(new  DestructibleObstacleElement(150, 500));
+        this.gamePanelContext.destructibleObstacleElements.add(new  DestructibleObstacleElement(250, 500));
+        this.gamePanelContext.destructibleObstacleElements.add(new  DestructibleObstacleElement(400, 500));
+
+
+        this.gamePanelContext.destructibleObstacleElements.add(new  DestructibleObstacleElement(150, 600));
+        this.gamePanelContext.destructibleObstacleElements.add(new  DestructibleObstacleElement(200, 600));
+        this.gamePanelContext.destructibleObstacleElements.add(new  DestructibleObstacleElement(250, 600));
+        this.gamePanelContext.destructibleObstacleElements.add(new  DestructibleObstacleElement(300, 600));
+        this.gamePanelContext.destructibleObstacleElements.add(new  DestructibleObstacleElement(400, 600));
+        this.gamePanelContext.destructibleObstacleElements.add(new  DestructibleObstacleElement(500, 600));
+        this.gamePanelContext.destructibleObstacleElements.add(new  DestructibleObstacleElement(550, 600));
+        this.gamePanelContext.destructibleObstacleElements.add(new  DestructibleObstacleElement(600, 600));
     }
 
     private void userInit() {

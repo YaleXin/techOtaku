@@ -11,8 +11,7 @@ import java.awt.event.KeyListener;
 import java.util.Timer;
 
 /**
- * Author：Yalexin
- * Email： 181303209@yzu.edu.cn
+ *Author: techOtaku
  */
 public class GameKeyListener implements KeyListener {
     GamePanel gamePanelContext = null;

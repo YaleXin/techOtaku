@@ -3,8 +3,7 @@ package com.techotaku.threads;
 import com.techotaku.GamePanel;
 
 /**
- * Author：Yalexin
- * Email： 181303209@yzu.edu.cn
+ *Author: techOtaku
  */
 public class PlayerInvincibleRunnable implements Runnable {
     GamePanel gamePanelContext = null;

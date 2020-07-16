@@ -5,8 +5,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 /**
- * Author：Yalexin
- * Email： 181303209@yzu.edu.cn
+ *Author: techOtaku
  */
 public class BombElement extends BaseElement {
     /**

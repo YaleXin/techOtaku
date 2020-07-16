@@ -3,8 +3,7 @@ package com.techotaku;
 
 
 /**
- * Author：Yalexin
- * Email： 181303209@yzu.edu.cn
+ *Author: techOtaku
  */
 
 import javax.swing.*;
@@ -14,6 +13,9 @@ import java.net.URL;
  * 加载图片资源
  */
 public class Data {
+    public static URL floorURL = Data.class.getResource("statics/floor00.png");
+    public static ImageIcon floor = new ImageIcon(floorURL);
+
     public static URL floor01URL = Data.class.getResource("statics/floor01.png");
     public static ImageIcon floor01 = new ImageIcon(floor01URL);
 

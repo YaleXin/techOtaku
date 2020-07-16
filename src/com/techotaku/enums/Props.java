@@ -1,8 +1,7 @@
 package com.techotaku.enums;
 
 /**
- * Author：Yalexin
- * Email： 181303209@yzu.edu.cn
+ *Author: techOtaku
  */
 public enum  Props {
     // 血瓶

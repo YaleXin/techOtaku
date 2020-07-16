@@ -5,8 +5,7 @@ import com.techotaku.elements.PlayerElement;
 import java.util.TimerTask;
 
 /**
- * Author：Yalexin
- * Email： 181303209@yzu.edu.cn
+ *Author: techOtaku
  */
 public class MyBombDecTimerTask extends TimerTask {
     PlayerElement playerElement = null;

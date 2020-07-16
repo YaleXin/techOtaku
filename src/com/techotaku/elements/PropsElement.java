@@ -3,8 +3,7 @@ package com.techotaku.elements;
 import com.techotaku.enums.Props;
 
 /**
- * Author：Yalexin
- * Email： 181303209@yzu.edu.cn
+ *Author: techOtaku
  */
 public class PropsElement extends BaseElement{
     public Props type;
