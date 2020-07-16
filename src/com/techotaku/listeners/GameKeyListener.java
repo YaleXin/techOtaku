@@ -3,6 +3,8 @@ package com.techotaku.listeners;
 import com.techotaku.GamePanel;
 import com.techotaku.elements.BombElement;
 import com.techotaku.enums.KeySet;
+import com.techotaku.enums.Music;
+import com.techotaku.threads.GameShortMusicRunnable;
 import com.techotaku.timertasks.MyBombDecTimerTask;
 import com.techotaku.timertasks.MyBombDisappearTimerTask;
 
@@ -128,6 +130,10 @@ public class GameKeyListener implements KeyListener {
                 System.out.println("添加了");
                 MyBombDisappearTimerTask myBombDisappearTimerTask = new MyBombDisappearTimerTask(this.gamePanelContext,bombElement);
                 Timer timer = new Timer();
+                // 音效线程
+                GameShortMusicRunnable gameShortMusicRunnable = new GameShortMusicRunnable(Music.RELEASE);
+                Thread thread = new Thread(gameShortMusicRunnable);
+                thread.start();
                 // 3秒钟后爆炸
                 timer.schedule(myBombDisappearTimerTask,3000);
                 // 5秒钟后炸弹数加一
@@ -146,6 +152,10 @@ public class GameKeyListener implements KeyListener {
                 System.out.println("添加了");
                 MyBombDisappearTimerTask myBombDisappearTimerTask = new MyBombDisappearTimerTask(this.gamePanelContext,bombElement);
                 Timer timer = new Timer();
+                // 音效线程
+                GameShortMusicRunnable gameShortMusicRunnable = new GameShortMusicRunnable(Music.RELEASE);
+                Thread thread = new Thread(gameShortMusicRunnable);
+                thread.start();
                 // 3秒钟后爆炸
                 timer.schedule(myBombDisappearTimerTask,3000);
                 // 5秒钟后炸弹数加一

@@ -5,6 +5,9 @@ import com.techotaku.elements.BombElement;
 import com.techotaku.elements.DestructibleObstacleElement;
 import com.techotaku.elements.FireElement;
 import com.techotaku.elements.WallElement;
+import com.techotaku.enums.Music;
+import com.techotaku.threads.GameShortMusicRunnable;
+import com.techotaku.utils.PlayMusic;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -24,6 +27,10 @@ public class MyBombDisappearTimerTask extends TimerTask {
     @Override
     public void run() {
         this.gamePanelContext.bombElements.remove(this.bombElement);
+        // 音效线程
+        GameShortMusicRunnable gameShortMusicRunnable = new GameShortMusicRunnable(Music.BOMB);
+        Thread thread = new Thread(gameShortMusicRunnable);
+        thread.start();
         // 炸点地点肯定产生火焰，火焰3秒钟后消失
         FireElement element0 = new FireElement(this.bombElement.x, this.bombElement.y);
         this.gamePanelContext.fireElements.add(element0);
